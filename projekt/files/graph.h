@@ -16,6 +16,7 @@ public:
     Graph(std::istream& in);
     ~Graph();
     void addNode(const std::string& name);
+    void addNode(Node* node);
     Node* find(const std::string& name);
     void resetVals();
 	std::vector<Node*>::iterator begin();

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <cassert>
 #include "graph.h"
 #include <algorithm>
@@ -28,14 +29,21 @@ Node* find_and_test(const std::string& s, Graph& g)
 
 void test_graph()
 {
-    Graph g{};
+    std::ifstream file("graf.txt");
+    Graph g(file);
+        /*
     g.addNode("Lund");
     g.addNode("Dalby");
     g.addNode("Sodra Sandby");
     g.addNode("Flyinge");
     g.addNode("Torna Hallestad");
     g.addNode("Veberod");
+    */
 
+    Node* n = g.find("Dalby");
+    for(auto n1 : n->getEdges()){
+        std::cout << n->getName() << " " << n1.getDestination()->getName() << " " << n1.getLength() << std::endl;
+    }
     auto n_lund = find_and_test("Lund", g);
     find_and_test("Dalby", g);
     find_and_test("Sodra Sandby", g);
