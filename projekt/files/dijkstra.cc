@@ -4,7 +4,7 @@
 Dijkstra::Dijkstra(){
 }
 
-void Dijkstra::dijkstra(Node *start){
+void Dijkstra::dijkstra(Node *start, int (*f)(const Node&, const Edge&)){
     NodeSet set;
     Node *prevNode = start;
     start->setValue(0);
@@ -15,8 +15,10 @@ void Dijkstra::dijkstra(Node *start){
 
         for (Edge e : list){
             Node *nextNode = e.getDestination();
-            int dist = prevNode->getValue() + e.getLength();
-            
+            int dist = 0;
+            int cost = (*f)(*nextNode, e);
+            dist = prevNode->getValue() + cost;
+
             if (dist < nextNode->getValue()){
                 nextNode->setValue(dist);
                 nextNode->setParent(prevNode);

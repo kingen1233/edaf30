@@ -10,7 +10,7 @@ class node_set;
 class Dijkstra {
 public:
 	Dijkstra();
-    void dijkstra(Node* start);   
+    void dijkstra(Node *start, int (*f)(const Node&, const Edge&));   
 	
 private:
     void printPath(Node* lastnode);

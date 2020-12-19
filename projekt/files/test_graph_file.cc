@@ -1,9 +1,11 @@
 #include <iostream>
+#include <fstream>
 #include <cassert>
 #include "graph.h"
 #include <algorithm>
 #include <utility>
 #include <set>
+#include <string>
 
 using std::cout;
 using std::endl;
@@ -18,7 +20,7 @@ void print_neighbours(Node* n)
 
 Node* find_and_test(const std::string& s, Graph& g)
 {
-    Node * n = g.find(s);
+    Node* n = g.find(s);
     assert(n != nullptr);
     assert(n->getName() == s);
     assert(n->getValue() == Node::max_value);
@@ -27,14 +29,8 @@ Node* find_and_test(const std::string& s, Graph& g)
 
 void test_graph()
 {
-    Graph g{};
-
-    g.addNode("Lund");
-    g.addNode("Dalby");
-    g.addNode("Sodra Sandby");
-    g.addNode("Torna Hallestad");
-    g.addNode("Flyinge");
-    g.addNode("Veberod");
+    std::ifstream file("graf.txt");
+    Graph g(file);    
 
     auto n_lund = find_and_test("Lund", g);
     find_and_test("Dalby", g);
@@ -55,9 +51,7 @@ void test_graph()
     for(auto it = g.begin(); it != g.end(); ++it){
         assert((*it)->getValue() == Node::max_value);
     }
-
-
-    cout << "test_graph_nofile passed" << endl;
+    cout << "test_graph_file passed" << endl;
 }
 
 

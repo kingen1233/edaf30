@@ -36,7 +36,6 @@ void test()
     assert(!ns.isEmpty());
 
     a.setValue(40);
-    std::cout << a.getValue() << b.getValue() << c.getValue() << std::endl;
     assert(ns.removeMin() == &b);
     assert(ns.removeMin() == &c);
     assert(ns.removeMin() == &a);

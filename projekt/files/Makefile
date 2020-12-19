@@ -21,11 +21,15 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = test_dijkstra
+PROGS = test_dijkstra test_graph_nofile test_graph_small test_nodeset test_graph_file
 
 all: $(PROGS)
 # Targets rely on implicit rules for compiling and linking
 test_dijkstra: node_set.o node.o edge.o dijkstra.o graph.o
+test_graph_nofile: node.o edge.o graph.o 
+test_graph_small: node.o edge.o
+test_nodeset: node.o edge.o node_set.o
+test_graph_file: node.o edge.o graph.o 
 
 # Phony targets
 .PHONY: all test clean distclean

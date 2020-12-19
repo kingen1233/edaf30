@@ -60,6 +60,8 @@ Node *Graph::find(const std::string &name)
     {
         return *foundNode;
     }
+    
+    std::cout << "No node with name: " << name << " was found." << std::endl;
     return nullptr;
 }
 
