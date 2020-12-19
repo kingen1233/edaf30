@@ -13,7 +13,7 @@ public:
     void dijkstra(Node* start);   
 	
 private:
-
+    void printPath(Node* lastnode);
 };
 
 

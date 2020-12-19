@@ -17,11 +17,14 @@ public:
     void addEdge(Node *destination, int length);
     const std::vector<Edge> &getEdges() const;
     static const int max_value = std::numeric_limits<int>::max();
+    void setParent(Node* node);
+    Node* getParent() const;
 
 private:
     std::string nodeName;
     std::vector<Edge> edges;
     int value;    
+    Node* parent = nullptr;
 };
 
 

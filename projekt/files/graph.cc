@@ -12,27 +12,24 @@ Graph::Graph(std::istream &in)
     {
         int idx = line.find(":");
         string startNode = line.substr(0, idx);
-        //Node n(startNode);
+        
         line.erase(0, idx + 1);
         idx = line.find(" ");
         int length = std::stoi(line.substr(0, idx - 1));
         string destination = "";
+
         if (length > 9) {
             destination = line.substr(idx + 4, (line.length() - idx + 1));
         }
         else {
             destination = line.substr(idx + 3, (line.length() - idx + 1));
         }
-        //Node dest(destination);
+
         addNode(destination);
         addNode(startNode);
         Node *start = find(startNode);
         Node *dest = find(destination);
         start->addEdge(dest, length);
-
-        /*std::cout << startNode << length <<  destination << std::endl;
-        n.addEdge(&dest, length);
-        addNode(&n);*/
     }
 }
 
@@ -57,9 +54,7 @@ void Graph::addNode(Node *node)
 Node *Graph::find(const std::string &name)
 {
 
-    auto comp = [name](Node *n1) {
-        return !name.compare(n1->getName());
-    };
+    auto comp = [name](Node *n1) { return !name.compare(n1->getName()); };
     auto foundNode = std::find_if(graph.begin(), graph.end(), comp);
     if (foundNode != graph.end())
     {
@@ -71,8 +66,7 @@ Node *Graph::find(const std::string &name)
 void Graph::resetVals()
 {
     int max = std::numeric_limits<int>::max();
-    for (auto i : graph)
-    {
+    for (auto i : graph){
         i->setValue(max);
     }
 }

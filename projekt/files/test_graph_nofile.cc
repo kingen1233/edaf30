@@ -40,10 +40,6 @@ void test_graph()
     g.addNode("Veberod");
     */
 
-    Node* n = g.find("Dalby");
-    for(auto n1 : n->getEdges()){
-        std::cout << n->getName() << " " << n1.getDestination()->getName() << " " << n1.getLength() << std::endl;
-    }
     auto n_lund = find_and_test("Lund", g);
     find_and_test("Dalby", g);
     find_and_test("Sodra Sandby", g);

@@ -31,3 +31,11 @@ void Node::addEdge(Node* destination, int length){
 const std::vector<Edge>& Node::getEdges() const{
     return edges;
 }
+
+void Node::setParent(Node* node){
+    parent = node;
+}
+
+Node* Node::getParent() const{
+    return parent;
+}
